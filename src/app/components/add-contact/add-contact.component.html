@@ -1,0 +1,31 @@
+<br>
+<div class="row" *ngIf="showForm">
+  <div class="col s12">
+    <form (ngSubmit)="newContact()" #contactForm="ngForm">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="fa fa-user prefix"></i>
+          <input type="text" name="name" class="validate" id="name" required [(ngModel)]="contact.name" #name="ngModel">
+          <label for="name">Name</label>
+          <span class="helper-text" data-error="Name is required !"></span>
+        </div>
+
+        <div class="input-field col s6" >
+          <i class="fa fa-phone prefix"></i>
+          <input type="text" name="tel" id="tel" class="validate" required [(ngModel)]="contact.tel" #name="ngModel">
+          <label for="tel">Phone number</label>
+          <span class="helper-text" data-error="Phone number is required !"></span>
+        </div>
+      </div>
+      <button class="btn-large red" type="submit" [disabled]="contactForm.invalid" >Submit</button>
+
+    </form>
+
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red waves-effect waves-light" (click)="showForm=!showForm">
+    <i class="large fa fa-plus" [class.fa-plus]="!showForm" [class.fa-minus]="showForm" ></i>
+  </a>
+</div>
